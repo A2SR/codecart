@@ -43,7 +43,7 @@ def Search():
     search = tkinter.Tk()
     search.title("Search")
     sql_connection()
-    training.mainloop()
+    search.mainloop()
 
 # Main window of GUI
 top = tkinter.Tk()

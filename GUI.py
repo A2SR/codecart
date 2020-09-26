@@ -38,9 +38,18 @@ def Training():
     sql_connection()
     training.mainloop()
 
+def Search():
+    top.destroy()
+    search = tkinter.Tk()
+    search.title("Search")
+    sql_connection()
+    training.mainloop()
+
 # Main window of GUI
 top = tkinter.Tk()
 top.geometry("100x100")
 tb = tkinter.Button(top, text = "Training!", command = Training, width=25, height=5, bg="Blue", fg="red")
+sb = tkinter.Button(top, text = "Search!", command = Search, width=25, height=5, bg="red", fg="blue")
 tb.pack()
+sb.pack()
 top.mainloop()

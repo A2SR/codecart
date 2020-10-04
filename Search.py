@@ -1,10 +1,9 @@
 from databasesrc import *
-import tkinter
-from GUI import *
+from tkinter import *
+
 
 # Function to pop up Search window
 def Search():
-    top.destroy()
     search = tkinter.Tk()
     search.title("Search")
     sql_connection()

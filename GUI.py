@@ -1,49 +1,14 @@
-import sqlite3
-from sqlite3 import Error
+
 import tkinter
-from tkinter import messagebox
+
+from Training import *
+from databasesrc import *
+from Search import *
 
 
-# Function to set up database connection
-def sql_connection():
 
-    try:
-
-        con = sqlite3.connect('contents.db')
-
-        return con
-
-    except Error:
-
-        print(Error)
-
-# Function to create Table in database
-def sql_table(con):
-
-    cursorObj = con.cursor()
-
-    cursorObj.execute("CREATE TABLE contents(barcode integer PRIMARY KEY, name text)")
-
-    con.commit()
 
 con = sql_connection()
-
-# sql_table(con)
-
-## Function to pop up Training Window of GUI 
-def Training():
-    top.destroy()
-    training = tkinter.Tk()
-    training.title("Training")
-    sql_connection()
-    training.mainloop()
-
-def Search():
-    top.destroy()
-    search = tkinter.Tk()
-    search.title("Search")
-    sql_connection()
-    search.mainloop()
 
 # Main window of GUI
 top = tkinter.Tk()

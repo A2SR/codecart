@@ -146,6 +146,49 @@ def Search():
             messagebox.showerror('Required Fields', 'Please include all fields')
             return
 
+        db.insert(itemname_text.get(), barcode_text.get())
+        clear_txt()
+        populate_list()
+
+
+    def select_contents(event):
+        
+        try:
+            global selected_item
+            index = contents_tree_view.selection()[0]
+            selected_item = contents_tree_view.item(index)['values']
+            itemname_entry.delete(0, END)
+            itemname_entry.insert(END, selected_item[1])
+            barcode_entry.delete(0, END)
+            barcode_entry.insert(END, selected_item[2])
+        except IndexError:
+            pass
+
+
+    def remove_contents():
+        db.remove(selected_item[0])
+        clear_text()
+        populate_list()
+
+    
+    def update_contents():
+        db.update(selected_item[0], itemname_text.get(), barcode_text.get())
+        populate_list()
+
+
+    def clear_text():
+        itemname_entry.delete(0, END)
+        barcode_entry.delete(0, END)
+
+    
+    def search_itemname():
+        itemname = itemname_search.get()
+        populate_list(itemname)
+
+    
+    def execute_query():
+        query = query_search.get()
+        populate_list2()
         
 
 

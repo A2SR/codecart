@@ -34,7 +34,7 @@ con = sql_connection()
 ## Function to pop up Training Window of GUI 
 def Training():
     top.destroy()
-    training = tkinter.Tk()
+    training = Tk()
     training.title("Training")
     sql_connection()
     training.mainloop()
@@ -58,7 +58,7 @@ def Search():
     query_search.set("Select * from contents where barcode>1")
     query_search.entry = Entry(frame_search, textvariable = query_search, width = 40)
     query_search.entry.grid(row = 1, column = 1)
-    
+
 
 
 

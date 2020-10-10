@@ -1,6 +1,7 @@
 import sqlite3
 from sqlite3 import Error
-import tkinter
+from tkinter import *
+from tkinter.ttk import Treeview
 from tkinter import messagebox
 
 
@@ -40,10 +41,28 @@ def Training():
 
 def Search():
     top.destroy()
-    search = tkinter.Tk()
+    search = Tk()
     search.title("Search")
-    sql_connection()
-    search.mainloop()
+    frame_search = Frame(search)
+    frame_search.grid(row = 0, column = 0)
+
+    lbl_search = Label(frame_search, text = 'Search by Item Name', font = ('bold', 12), pady = 20)
+    lbl_search.grid(row = 0, column = 0, sticky = W)
+    itemname_search = StringVar()
+    itemname_search_entry = Entry(frame_search, textvariable = itemname_search)
+    itemname_search_entry.grid(row = 0, column = 1)
+
+    lbl_search = Label(frame_search, text = 'Search by Query', font =('bold', 12), pady = 20)
+    lbl_search.grid(row = 1, column = 0, sticky=W)
+    query_search = StringVar()
+    query_search.set("Select * from contents where barcode>1")
+    query_search.entry = Entry(frame_search, textvariable = query_search, width = 40)
+    query_search.entry.grid(row = 1, column = 1)
+    
+
+
+
+
 
 # Main window of GUI
 top = tkinter.Tk()

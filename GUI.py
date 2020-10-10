@@ -3,6 +3,7 @@ from sqlite3 import Error
 from tkinter import *
 from tkinter.ttk import Treeview
 from tkinter import messagebox
+from db import *
 
 
 # Function to set up database connection
@@ -189,7 +190,7 @@ def Search():
     def execute_query():
         query = query_search.get()
         populate_list2()
-        
+
 
 
         

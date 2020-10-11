@@ -33,6 +33,19 @@ con = sql_connection()
  """
 # sql_table(con)
 
+def select_contents(event):
+        
+        try:
+            global selected_item
+            index = contents_tree_view.selection()[0]
+            selected_item = contents_tree_view.item(index)['values']
+            itemname_entry.delete(0, END)
+            itemname_entry.insert(END, selected_item[1])
+            barcode_entry.delete(0, END)
+            barcode_entry.insert(END, selected_item[2])
+        except IndexError:
+            pass
+        
 ## Function to pop up Training Window of GUI 
 def Training():
     top.destroy()
@@ -91,7 +104,7 @@ def Search():
         contents_tree_view.column(col, width = 120)
         contents_tree_view.heading(col, text = col)
     
-    contents_tree_view.bind('<<TreeviewSelect>>', select_contents())
+    contents_tree_view.bind('<<TreeviewSelect>>', select_contents)
     contents_tree_view.pack(side = "left", fill = "y")
     scrollbar = Scrollbar(frame_contents, orient = 'vertical')
     scrollbar.configure(command = contents_tree_view.yview)

@@ -151,7 +151,7 @@ def Search():
         populate_list()
 
 
-     frame_contents = Frame(search)
+    frame_contents = Frame(search)
     frame_contents.grid(row = 4, column = 0, columnspan = 4, rowspan = 6, pady = 20, padx = 20)
 
     columns = ["id", "name", "barcode"]

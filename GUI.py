@@ -106,6 +106,17 @@ def Search():
             barcode_entry.insert(END, selected_item[2])
         except IndexError:
             pass
+
+    
+    def add_contents():
+        
+        if itemname_text.get() == '' or barcode_text.get() == '':
+            messagebox.showerror('Required Fields', 'Please include all fields')
+            return
+
+        Database.insert(itemname_text.get(), barcode_text.get())
+        clear_text()
+        populate_list()
     
     contents_tree_view.bind('<<TreeviewSelect>>', select_contents)
     contents_tree_view.pack(side = "left", fill = "y")

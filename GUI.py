@@ -82,18 +82,6 @@ def Search():
     barcode_entry.grid(row = 0, column = 3, sticky = W)
 
 
-    frame_contents = Frame(search)
-    frame_contents.grid(row = 4, column = 0, columnspan = 4, rowspan = 6, pady = 20, padx = 20)
-
-    columns = ["id", "name", "barcode"]
-    contents_tree_view = Treeview(frame_contents, columns = columns, show = "headings")
-    contents_tree_view.column("id", width = 30)
-    
-    for col in columns[1:]:
-        contents_tree_view.column(col, width = 120)
-        contents_tree_view.heading(col, text = col)
-
-
     def select_contents(event):
         
         try:
@@ -162,6 +150,17 @@ def Search():
         clear_text()
         populate_list()
 
+
+     frame_contents = Frame(search)
+    frame_contents.grid(row = 4, column = 0, columnspan = 4, rowspan = 6, pady = 20, padx = 20)
+
+    columns = ["id", "name", "barcode"]
+    contents_tree_view = Treeview(frame_contents, columns = columns, show = "headings")
+    contents_tree_view.column("id", width = 30)
+    
+    for col in columns[1:]:
+        contents_tree_view.column(col, width = 120)
+        contents_tree_view.heading(col, text = col)
     
     
     contents_tree_view.bind('<<TreeviewSelect>>', select_contents)

@@ -3,7 +3,7 @@ from sqlite3 import Error
 from tkinter import *
 from tkinter.ttk import Treeview
 from tkinter import messagebox
-from db.py import *
+from db import *
 
 
 # Function to set up database connection

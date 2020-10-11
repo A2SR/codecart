@@ -32,7 +32,7 @@ class Database:
         self.conn.commit
 
     
-    def update(self, id):
+    def update(self, id, itemname, barcode):
         self.cur.execute("UPDATE contents SET name = ?, barcode = ? WHERE id = ?", (itemname, barcode))
         self.conn.commit
 

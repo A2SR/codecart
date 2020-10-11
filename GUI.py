@@ -196,6 +196,9 @@ def Search():
     search_query_btn = Button(frame_btns, text = 'Search Query', width = 12, command = execute_query)
     search_query_btn.grid(row = 1, column = 2)
 
+    search.geometry('700x550')
+    populate_list()
+    search.mainloop()
 
 
 

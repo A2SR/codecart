@@ -3,11 +3,11 @@ from sqlite3 import Error
 from tkinter import *
 from tkinter.ttk import Treeview
 from tkinter import messagebox
-from db import *
+from db.py import *
 
 
 # Function to set up database connection
-def sql_connection():
+""" def sql_connection():
 
     try:
 
@@ -17,10 +17,10 @@ def sql_connection():
 
     except Error:
 
-        print(Error)
+        print(Error) """
 
 # Function to create Table in database
-def sql_table(con):
+""" def sql_table(con):
 
     cursorObj = con.cursor()
 
@@ -29,7 +29,7 @@ def sql_table(con):
     con.commit()
 
 con = sql_connection()
-
+ """
 # sql_table(con)
 
 ## Function to pop up Training Window of GUI 
@@ -37,13 +37,12 @@ def Training():
     top.destroy()
     training = Tk()
     training.title("Training")
-    sql_connection()
     training.mainloop()
 
 def Search():
     top.destroy()
     search = Tk()
-    search.title("Search")
+    #search.title("Search")
     frame_search = Frame(search)
     frame_search.grid(row = 0, column = 0)
 
@@ -83,7 +82,7 @@ def Search():
     frame_contents = Frame(search)
     frame_contents.grid(row = 2, column = 0, columnspan = 4, rowspan = 6, pady = 20, padx = 20)
 
-    columns = ['id', 'name', 'barcode']
+    columns = ["id", "name", "barcode"]
     contents_tree_view = Treeview(frame_contents, columns = columns, show = "headings")
     contents_tree_view.column("id", width = 30)
     

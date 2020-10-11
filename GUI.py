@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter.ttk import Treeview
 from tkinter import messagebox
 from db import *
-from Database import *
+
 
 
 # Function to set up database connection
@@ -147,7 +147,7 @@ def Search():
             messagebox.showerror('Required Fields', 'Please include all fields')
             return
 
-        db.insert(itemname_text.get(), barcode_text.get())
+        Database.insert(itemname_text.get(), barcode_text.get())
         clear_txt()
         populate_list()
 
@@ -167,13 +167,13 @@ def Search():
 
 
     def remove_contents():
-        db.remove(selected_item[0])
+        Database.remove(selected_item[0])
         clear_text()
         populate_list()
 
     
     def update_contents():
-        db.update(selected_item[0], itemname_text.get(), barcode_text.get())
+        Database.update(selected_item[0], itemname_text.get(), barcode_text.get())
         populate_list()
 
 

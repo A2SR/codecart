@@ -6,7 +6,7 @@ class Database:
     def __init__(self, db):
         self.conn = sqlite3.connect('contents.db')
         self.cur = self.conn.cursor()
-        self.cur.execute("CREATE TABLE IF NOT EXISTS contents (id INTEGER PRIMARY KEY, name text, barode integer)")
+        self.cur.execute("CREATE TABLE IF NOT EXISTS contents (id INTEGER PRIMARY KEY, name text, barode text)")
         self.conn.commit
 
     

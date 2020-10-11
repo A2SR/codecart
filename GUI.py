@@ -128,7 +128,7 @@ def Search():
         for i in contents_tree_view.get_children():
             contents_tree_view.delete(i)
 
-        for row in db.fetch(itemname):
+        for row in Database.fetch(itemname):
             contents_tree_view.insert('', 'end', values = row)
 
     
@@ -137,7 +137,7 @@ def Search():
         for i in contents_tree_view.get_children():
             contents_tree_view.delete(i)
 
-        for row in db.fetch2(query):
+        for row in Database.fetch2(query):
             contents_tree_view.insert('', 'end', values = row)
 
     

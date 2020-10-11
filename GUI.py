@@ -108,7 +108,7 @@ def Search():
             pass
 
     
-     def populate_list(itemname = ''):
+    def populate_list(itemname = ''):
        
         for i in contents_tree_view.get_children():
             contents_tree_view.delete(i)

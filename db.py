@@ -10,7 +10,7 @@ class Database:
         self.conn.commit
 
     
-    def fetch(self, itemname=''):
+    def fetch(self, itemname):
         self.cur.execute("SELECT * FROM contents WHERE name LIKE ?", ('%'+itemname+'%'))
         rows = self.cur.fetchall()
         return rows

@@ -83,7 +83,7 @@ def Search():
 
 
     frame_contents = Frame(search)
-    frame_contents.grid(row = 2, column = 0, columnspan = 4, rowspan = 6, pady = 20, padx = 20)
+    frame_contents.grid(row = 4, column = 0, columnspan = 4, rowspan = 6, pady = 20, padx = 20)
 
     columns = ["id", "name", "barcode"]
     contents_tree_view = Treeview(frame_contents, columns = columns, show = "headings")

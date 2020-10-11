@@ -148,7 +148,7 @@ def Search():
             return
 
         Database.insert(itemname_text.get(), barcode_text.get())
-        clear_txt()
+        clear_text()
         populate_list()
 
 

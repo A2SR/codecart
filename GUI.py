@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter.ttk import Treeview
 from tkinter import messagebox
 from db import *
+from Database import *
 
 
 # Function to set up database connection

@@ -189,7 +189,7 @@ def Search():
     
     def execute_query():
         query = query_search.get()
-        populate_list2()
+        populate_list2(query)
 
 
 

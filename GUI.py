@@ -44,8 +44,11 @@ def Training():
 
 def Search():
     top.destroy()
+
+    db = Database('contents.db')
+
     search = Tk()
-    #search.title("Search")
+    search.title("Search")
     frame_search = Frame(search)
     frame_search.grid(row = 0, column = 0)
 
@@ -101,7 +104,7 @@ def Search():
         for i in contents_tree_view.get_children():
             contents_tree_view.delete(i)
 
-        for row in Database.fetch(itemname):
+        for row in db.fetch(itemname):
             contents_tree_view.insert('', 'end', values = row)
 
     
@@ -110,18 +113,18 @@ def Search():
         for i in contents_tree_view.get_children():
             contents_tree_view.delete(i)
 
-        for row in Database.fetch2(query):
+        for row in db.fetch2(query):
             contents_tree_view.insert('', 'end', values = row)
 
 
     def remove_contents():
-        Database.remove(selected_item[0])
+        db.remove(selected_item[0])
         clear_text()
         populate_list()
 
     
     def update_contents():
-        Database.update(selected_item[0], itemname_text.get(), barcode_text.get())
+        db.update(selected_item[0], itemname_text.get(), barcode_text.get())
         populate_list()
 
 
@@ -146,7 +149,7 @@ def Search():
             messagebox.showerror('Required Fields', 'Please include all fields')
             return
 
-        Database.insert(itemname_text.get(), barcode_text.get())
+        db.insert(itemname_text.get(), barcode_text.get())
         clear_text()
         populate_list()
 

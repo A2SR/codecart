@@ -91,7 +91,7 @@ def Search():
         contents_tree_view.column(col, width = 120)
         contents_tree_view.heading(col, text = col)
     
-    contents_tree_view.bind('<<TreeviewSelect>>', select_contents)
+    contents_tree_view.bind('<<TreeviewSelect>>', select_contents())
     contents_tree_view.pack(side = "left", fill = "y")
     scrollbar = Scrollbar(frame_contents, orient = 'vertical')
     scrollbar.configure(command = contents_tree_view.yview)

@@ -108,6 +108,50 @@ def Search():
             pass
 
     
+     def populate_list(itemname = ''):
+       
+        for i in contents_tree_view.get_children():
+            contents_tree_view.delete(i)
+
+        for row in Database.fetch(itemname):
+            contents_tree_view.insert('', 'end', values = row)
+
+    
+    def populate_list2(query = 'select * from contents'):
+        
+        for i in contents_tree_view.get_children():
+            contents_tree_view.delete(i)
+
+        for row in Database.fetch2(query):
+            contents_tree_view.insert('', 'end', values = row)
+
+
+    def remove_contents():
+        Database.remove(selected_item[0])
+        clear_text()
+        populate_list()
+
+    
+    def update_contents():
+        Database.update(selected_item[0], itemname_text.get(), barcode_text.get())
+        populate_list()
+
+
+    def clear_text():
+        itemname_entry.delete(0, END)
+        barcode_entry.delete(0, END)
+
+    
+    def search_itemname():
+        itemname = itemname_search.get()
+        populate_list(itemname)
+
+    
+    def execute_query():
+        query = query_search.get()
+        populate_list2(query)
+
+    
     def add_contents():
         
         if itemname_text.get() == '' or barcode_text.get() == '':
@@ -117,6 +161,8 @@ def Search():
         Database.insert(itemname_text.get(), barcode_text.get())
         clear_text()
         populate_list()
+
+    
     
     contents_tree_view.bind('<<TreeviewSelect>>', select_contents)
     contents_tree_view.pack(side = "left", fill = "y")
@@ -148,68 +194,6 @@ def Search():
     search_query_btn = Button(frame_btns, text = 'Search Query', width = 12, command = execute_query)
     search_query_btn.grid(row = 1, column = 2)
 
-
-
-    def populate_list(itemname = ''):
-       
-        for i in contents_tree_view.get_children():
-            contents_tree_view.delete(i)
-
-        for row in Database.fetch(itemname):
-            contents_tree_view.insert('', 'end', values = row)
-
-    
-    def populate_list2(query = 'select * from contents'):
-        
-        for i in contents_tree_view.get_children():
-            contents_tree_view.delete(i)
-
-        for row in Database.fetch2(query):
-            contents_tree_view.insert('', 'end', values = row)
-
-    
-    def add_contents():
-        
-        if itemname_text.get() == '' or barcode_text.get() == '':
-            messagebox.showerror('Required Fields', 'Please include all fields')
-            return
-
-        Database.insert(itemname_text.get(), barcode_text.get())
-        clear_text()
-        populate_list()
-
-    def remove_contents():
-        Database.remove(selected_item[0])
-        clear_text()
-        populate_list()
-
-    
-    def update_contents():
-        Database.update(selected_item[0], itemname_text.get(), barcode_text.get())
-        populate_list()
-
-
-    def clear_text():
-        itemname_entry.delete(0, END)
-        barcode_entry.delete(0, END)
-
-    
-    def search_itemname():
-        itemname = itemname_search.get()
-        populate_list(itemname)
-
-    
-    def execute_query():
-        query = query_search.get()
-        populate_list2(query)
-
-
-
-        
-
-
-
-    
 
 
 

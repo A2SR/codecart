@@ -36,9 +36,15 @@ class Database:
         self.cur.execute("UPDATE contents SET name = ?, barcode = ? WHERE id = ?", (itemname, barcode))
         self.conn.commit
 
+
+    def createtrainingtable(self, db):
+        self.cur.execute("CREATE TABLE IF NOT EXISTS trainingcopy (id INTEGER PRIMARY KEY, name text, barode text)")
+        self.cur.execute("INSERT INTO trainingcopy SELECT * FROM contents")
+        self.conn.commit
+
     
     def __del__(self):
         self.conn.close
 
-
+    
     

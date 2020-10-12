@@ -38,6 +38,10 @@ con = sql_connection()
 ## Function to pop up Training Window of GUI 
 def Training():
     top.destroy()
+
+    db = Database("contents.db")
+    db.createtrainingtable
+
     training = Tk()
     training.title("Training")
     training.mainloop()

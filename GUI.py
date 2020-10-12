@@ -40,7 +40,7 @@ def Training():
     top.destroy()
 
     db = Database("contents.db")
-    db.createtrainingtable
+    db.createtrainingtable()
 
     training = Tk()
     training.title("Training")

@@ -37,9 +37,9 @@ class Database:
         self.conn.commit
 
 
-    def createtrainingtable(self, db):
-        self.cur.execute("CREATE TABLE IF NOT EXISTS trainingcopy (id INTEGER PRIMARY KEY, name text, barode text)")
-        self.cur.execute("INSERT INTO trainingcopy SELECT * FROM contents")
+    def createtrainingtable(self):
+        self.cur.execute("CREATE TABLE IF NOT EXISTS trainingcopy AS SELECT * FROM contents")
+        self.cur.execute("INSERT INTO trainingcopy SELECT id, name, barcode FROM contents")
         self.conn.commit
 
     

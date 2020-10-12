@@ -40,9 +40,15 @@ class Database:
     def createtrainingtable(self):
         self.cur.execute("DROP TABLE IF EXISTS trainingcopy")
         self.cur.execute("CREATE TABLE trainingcopy AS SELECT * FROM contents")
-        #self.cur.execute("INSERT INTO trainingcopy SELECT * FROM contents")
         self.conn.commit
 
+    def randomitem(self):
+        self.cur.execute("SELECT name FROM trainingcopy ORDER BY RANDOM() LIMIT 1")
+        row = self.cur.fetchone()
+        if row is not None:  # or just "if row"
+            return row[0]
+        else:
+            pass # didn't get back a row
     
     def __del__(self):
         self.conn.close

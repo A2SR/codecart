@@ -41,6 +41,8 @@ def Training():
 
     db = Database("contents.db")
     db.createtrainingtable()
+    randomitem = db.randomitem()
+    print (randomitem)
 
     training = Tk()
     training.title("Training")

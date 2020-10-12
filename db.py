@@ -11,7 +11,7 @@ class Database:
 
     
     def fetch(self, itemname):
-        self.cur.execute("SELECT * FROM contents WHERE name LIKE ?", ('%'+itemname+'%'))
+        self.cur.execute("SELECT * FROM contents WHERE name LIKE ?", ('%'+itemname+'%',))
         rows = self.cur.fetchall()
         return rows
 

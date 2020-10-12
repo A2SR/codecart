@@ -45,7 +45,7 @@ def Training():
 def Search():
     top.destroy()
 
-    db = Database('contents.db')
+    db = Database("contents.db")
 
     search = Tk()
     search.title("Search")

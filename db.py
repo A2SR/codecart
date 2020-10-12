@@ -38,8 +38,9 @@ class Database:
 
 
     def createtrainingtable(self):
-        self.cur.execute("CREATE TABLE IF NOT EXISTS trainingcopy AS SELECT * FROM contents")
-        self.cur.execute("INSERT INTO trainingcopy SELECT * FROM contents")
+        self.cur.execute("DROP TABLE IF EXISTS trainingcopy")
+        self.cur.execute("CREATE TABLE trainingcopy AS SELECT * FROM contents")
+        #self.cur.execute("INSERT INTO trainingcopy SELECT * FROM contents")
         self.conn.commit
 
     

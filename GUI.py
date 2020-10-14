@@ -39,13 +39,36 @@ con = sql_connection()
 def Training():
     top.destroy()
 
-    db = Database("contents.db")
-    db.createtrainingtable()
-    randomitem = db.randomitem()
-    print (randomitem)
-
     training = Tk()
     training.title("Training")
+
+    count = 0
+
+    while count < 11:
+        
+        db = Database("contents.db")
+        db.createtrainingtable()
+        randomitem = db.randomitem()
+        text = StringVar()
+        findtext = Label(training, textvariable = text, font = 24, relief = RAISED)
+        text.set("Find "+ randomitem)
+        findtext.pack()
+
+        scanned = input()
+
+        check = db.checkbarcode(randomitem, scanned)
+
+        if check == 1:
+            count+1
+        else:
+            while True:
+                scanned = input()
+                check = db.checkbarcode(randomitem, scanned)
+
+                if check == 1:
+                    count+1
+
+
     training.mainloop()
 
 def Search():

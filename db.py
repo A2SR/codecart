@@ -45,10 +45,30 @@ class Database:
     def randomitem(self):
         self.cur.execute("SELECT name FROM trainingcopy ORDER BY RANDOM() LIMIT 1")
         row = self.cur.fetchone()
+       
         if row is not None:  # or just "if row"
             return row[0]
         else:
             pass # didn't get back a row
+
+    def checkbarcode(self, scannedname, scannedbarcode):
+        self.cur.execute("SELECT barcode FROM trainingcopy WHERE name = '"+scannedname+"'")
+        row = self.cur.fecthone()
+       
+        if row is not None:  # or just "if row"
+            
+            if barcode == scannedbarcode:
+               
+                self.cur.execute("DELETE FROM trainingcopy WHERE name = '"+scannedname+"'")
+                return 1
+             else:
+               
+                return 0
+
+        else:
+            pass # didn't get back a row
+
+
     
     def __del__(self):
         self.conn.close

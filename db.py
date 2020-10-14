@@ -61,7 +61,7 @@ class Database:
                
                 self.cur.execute("DELETE FROM trainingcopy WHERE name = '"+scannedname+"'")
                 return 1
-             else:
+            else:
                
                 return 0
 

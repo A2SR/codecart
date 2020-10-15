@@ -53,16 +53,16 @@ class Database:
 
     def checkbarcode(self, scannedname, scannedbarcode):
         self.cur.execute("SELECT barcode FROM trainingcopy WHERE name = '"+scannedname+"'")
-        row = self.cur.fecthone()
+        print(scannedname, scannedbarcode)
+        row = self.cur.fetchall()
        
         if row is not None:  # or just "if row"
             
+            barcode = row[0]
             if barcode == scannedbarcode:
-               
                 self.cur.execute("DELETE FROM trainingcopy WHERE name = '"+scannedname+"'")
                 return 1
             else:
-               
                 return 0
 
         else:

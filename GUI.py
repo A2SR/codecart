@@ -51,6 +51,7 @@ def Training():
         findtext = Label(training, textvariable=text, font=24, relief=RAISED)
         text.set("Find " + randomitem)
         findtext.pack()
+        #training.update()
 
         scanned = input()
 

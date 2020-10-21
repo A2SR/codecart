@@ -56,7 +56,7 @@ def Training():
         scanned = input()
 
         check = db.checkbarcode(randomitem, scanned)
-
+        
         if check == 1:
             count+1
         else:

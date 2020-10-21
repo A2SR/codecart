@@ -59,7 +59,7 @@ class Database:
         if row is not None:  # or just "if row"
             
             barcode = ''.join(map(str, row))
-            if barcode == scannedbarcode:
+            if barcode is scannedbarcode:
                 self.cur.execute("DELETE FROM trainingcopy WHERE name = '"+scannedname+"'")
                 return 1
             else:

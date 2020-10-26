@@ -55,10 +55,11 @@ class Database:
         self.cur.execute("SELECT barcode FROM trainingcopy WHERE name = '"+scannedname+"'")
         print(scannedname, scannedbarcode)
         row = self.cur.fetchall()
-       
+
         if row is not None:  # or just "if row"
             
-            barcode = ''.join(map(str, row))
+            barcode = ''.join(row))
+            print(barcode)
             if barcode is scannedbarcode:
                 self.cur.execute("DELETE FROM trainingcopy WHERE name = '"+scannedname+"'")
                 return 1

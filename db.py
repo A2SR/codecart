@@ -56,16 +56,17 @@ class Database:
         self.cur.execute("SELECT barcode FROM trainingcopy WHERE name = '"+scannedname+"'")
         print(scannedname, scannedbarcode)
         row = self.cur.fetchall()
+        value = parse_tuple("('%s',)" % scannedbarcode)
 
         if row is not None:  # or just "if row"
             
             barcode = row[0]
-            barcode.strip("(").strip(")").strip("'").strip(",")
+            
             print(barcode)
             
            
             
-            if barcode is scannedbarcode:
+            if barcode == value:
                 self.cur.execute("DELETE FROM trainingcopy WHERE name = '"+scannedname+"'")
                 return 1
             else:

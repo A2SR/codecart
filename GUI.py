@@ -33,6 +33,7 @@ con = sql_connection()
 # sql_table(con)
 
 
+
 # Function to pop up Training Window of GUI
 def Training():
     top.destroy()

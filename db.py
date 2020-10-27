@@ -3,6 +3,7 @@ import sqlite3
 class Database:
     
     
+
     def __init__(self, db):
         self.conn = sqlite3.connect(db)
         self.cur = self.conn.cursor()
@@ -58,7 +59,7 @@ class Database:
 
         if row is not None:  # or just "if row"
             
-            barcode = ''.join(row))
+            barcode = "(" + str(row[0]) + ")"
             print(barcode)
             if barcode is scannedbarcode:
                 self.cur.execute("DELETE FROM trainingcopy WHERE name = '"+scannedname+"'")

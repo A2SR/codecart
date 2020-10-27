@@ -42,11 +42,10 @@ def Training():
     training.title("Training")
 
     count = 0
-
+    db = Database("contents.db")
+    db.createtrainingtable()
     while count < 11:
-
-        db = Database("contents.db")
-        db.createtrainingtable()
+       
         randomitem = db.randomitem()
         text = StringVar()
         findtext = Label(training, textvariable=text, font=24, relief=RAISED)
@@ -64,6 +63,7 @@ def Training():
             while True:
                 scanned = input()
                 check = db.checkbarcode(randomitem, scanned)
+                
 
                 if check == 1:
                     count+1

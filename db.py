@@ -79,6 +79,7 @@ class Database:
             
             if barcode == value:
                 self.cur.execute("DELETE FROM trainingcopy WHERE name = '"+scannedname+"'")
+                self.conn.commit
                 return 1
             else:
                 return 0

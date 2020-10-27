@@ -60,6 +60,7 @@ class Database:
         if row is not None:  # or just "if row"
             
             barcode = row[0]
+            barcode.strip("(").strip(")").strip("'").strip(",")
             print(barcode)
             
            

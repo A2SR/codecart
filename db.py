@@ -60,7 +60,7 @@ class Database:
         if row is not None:  # or just "if row"
             
             barcode = ""
-            for i in barcode:
+            for i in row:
                 barcode = barcode + i + " "
             print(barcode)
             if barcode is scannedbarcode:

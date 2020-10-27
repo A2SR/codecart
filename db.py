@@ -67,6 +67,7 @@ class Database:
         print(scannedname, scannedbarcode)
         row = self.cur.fetchall()
         value = parse_tuple("('%s',)" % scannedbarcode)
+        print(value)
 
         if row is not None:  # or just "if row"
             

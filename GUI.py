@@ -36,7 +36,7 @@ con = sql_connection()
 
 # Function to pop up Training Window of GUI
 def Training():
-    
+    top.destroy()
 
     training = Tk()
     training.title("Training")

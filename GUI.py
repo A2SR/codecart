@@ -3,8 +3,18 @@ from sqlite3 import Error
 from tkinter import *
 from tkinter.ttk import Treeview
 from tkinter import messagebox
+from tkinter.messagebox import showinfo
 from db import *
+import RPi.GPIO as GPIO
 
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.OUT)
+GPIO.setup(12, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
+GPIO.setup(15, GPIO.OUT)
+
+global scanned
+scanned = ""
 
 # Function to set up database connection
 """ def sql_connection():
@@ -32,10 +42,24 @@ con = sql_connection()
  """
 # sql_table(con)
 
+def get_key(event):
+    global scanned
+    
+    
+    if event.char in '0123456789':
+        
+        scanned += event.char
+        #print('>', code)
+        #label['text'] = scanned
+        print(scanned)
 
+    if event.keysym == 'Return':
+        #print('result:', code)
+         return
 
 # Function to pop up Training Window of GUI
 def Training():
+    global scanned
     top.destroy()
 
     training = Tk()
@@ -44,30 +68,40 @@ def Training():
     count = 0
     db = Database("contents.db")
     db.createtrainingtable()
-    while count < 11:
+    check = 1
+    training.bind('<Key>', get_key)
+
+   
+   
+    while True:
        
-        randomitem = db.randomitem()
-        text = StringVar()
-        findtext = Label(training, textvariable=text, font=24, relief=RAISED)
-        text.set("Find " + randomitem)
-        findtext.pack()
+        if (check==1):
+            randomitem = db.randomitem()
+            text = StringVar()
+            findtext = Label(training, textvariable=text, font=24, relief=RAISED)
+            text.set("Find " + randomitem)
+            findtext.pack()
+            training.update()
+            check = 0
+    
+    
+        
+        if(len(scanned) == 12):
+            check = db.checkbarcode(randomitem, scanned)
+            scanned = ""
+        
         training.update()
+        #if check == 1:
+        #    count+1
+        #else:
+        #    while True:
+        #        training.bind('<Key>', get_key)
+        #        if(len(scanned) == 12):
+        #            check = db.checkbarcode(randomitem, scanned)
+        #       
+        #           if check == 1:
+        #               count+1
 
-        scanned = input()
-
-        check = db.checkbarcode(randomitem, scanned)
-        
-        if check == 1:
-            count+1
-        else:
-            while True:
-                scanned = input()
-                check = db.checkbarcode(randomitem, scanned)
-                
-
-                if check == 1:
-                    count+1
-        
         
         
 
@@ -231,6 +265,8 @@ def Search():
 
 
 # Main window of GUI
+
+
 top = Tk()
 top.geometry("200x200")
 tb = Button(top, text="Training!", command=Training,
@@ -240,3 +276,13 @@ sb = Button(top, text="Search!", command=Search,
 tb.pack()
 sb.pack()
 top.mainloop()
+
+
+
+
+
+
+
+
+
+

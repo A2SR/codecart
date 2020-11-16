@@ -1,5 +1,12 @@
 import sqlite3
 import ast
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.OUT)
+GPIO.setup(12, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
+GPIO.setup(15, GPIO.OUT)
 
 def parse_tuple(string):
     try:
@@ -61,6 +68,35 @@ class Database:
             return row[0]
         else:
             pass # didn't get back a row
+    
+    def led(self, scannedname):
+        self.cur.execute("SELECT location FROM trainingcopy WHERE name = '"+scannedname+"'")
+        row = self.cur.fetchall()
+
+        if row is not None: 
+    
+            location = row[0]
+
+            if location == "('1',)":
+                GPIO.output(11, GPIO.HIGH)
+                GPIO.output(12, GPIO.LOW)
+                GPIO.output(13, GPIO.LOW)
+                GPIO.output(15, GPIO.LOW)
+            if location == "('2',)":
+                GPIO.output(11, GPIO.LOW)
+                GPIO.output(12, GPIO.HIGH)
+                GPIO.output(13, GPIO.LOW)
+                GPIO.output(15, GPIO.LOW)
+            if location == "('3',)":
+                GPIO.output(11, GPIO.LOW)
+                GPIO.output(12, GPIO.LOW)
+                GPIO.output(13, GPIO.HIGH)
+                GPIO.output(15, GPIO.LOW)
+            if location == "('4',)":
+                GPIO.output(11, GPIO.LOW)
+                GPIO.output(12, GPIO.LOW)
+                GPIO.output(13, GPIO.LOW)
+                GPIO.output(15, GPIO.HIGH)
 
     def checkbarcode(self, scannedname, scannedbarcode):
         self.cur.execute("SELECT barcode FROM trainingcopy WHERE name = '"+scannedname+"'")
@@ -72,7 +108,7 @@ class Database:
         if row is not None:  # or just "if row"
             
             barcode = row[0]
-            
+             
             print(barcode)
             
            

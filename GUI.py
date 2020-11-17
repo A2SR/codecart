@@ -160,6 +160,7 @@ def Search():
             selected_item = contents_tree_view.item(index)['values']
             itemname_entry.delete(0, END)
             itemname_entry.insert(END, selected_item[1])
+            db.led(selected_item[1])
             barcode_entry.delete(0, END)
             barcode_entry.insert(END, selected_item[2])
         except IndexError:

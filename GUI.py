@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import sqlite3
 from sqlite3 import Error
 from tkinter import *
@@ -15,6 +16,12 @@ GPIO.setup(15, GPIO.OUT)
 
 global scanned
 scanned = ""
+=======
+from tkinter import *
+from Training import *
+from databasesrc import *
+from Search import *
+>>>>>>> Stashed changes
 
 # Function to set up database connection
 """ def sql_connection():
@@ -267,6 +274,7 @@ def Search():
 
 
 # Main window of GUI
+<<<<<<< Updated upstream
 
 
 top = Tk()
@@ -275,6 +283,12 @@ tb = Button(top, text="Training!", command=Training,
             width=25, height=5, bg="Blue", fg="red")
 sb = Button(top, text="Search!", command=Search,
             width=25, height=5, bg="red", fg="blue")
+=======
+top = Tk()
+top.geometry("200x200")
+tb = Button(top, text = "Training!", command = Training, width=25, height=5, bg="Blue", fg="red")
+sb = Button(top, text = "Search!", command = Search, width=25, height=5, bg="red", fg="blue")
+>>>>>>> Stashed changes
 tb.pack()
 sb.pack()
 top.mainloop()

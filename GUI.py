@@ -77,6 +77,7 @@ def Training():
        
         if (check==1):
             randomitem = db.randomitem()
+            db.led(randomitem)
             text = StringVar()
             findtext = Label(training, textvariable=text, font=24, relief=RAISED)
             text.set("Find " + randomitem)
